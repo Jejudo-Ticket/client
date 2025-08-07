@@ -171,17 +171,18 @@ const handleLogin = async () => {
                 password: password.value,
             })
             .then((res) => {
-                console.log('✅ 로그인 API 응답:', res.data)
-                console.log('✅ 받은 토큰:', res.data.token)
-                console.log('✅ 받은 권한:', res.data.userRole)
-                
+                console.log('✅res.data:', res.data)
+
                 authStore.login(res.data)
-                
-                console.log('✅ 저장된 토큰:', authStore.token)
-                console.log('✅ 저장된 권한:', authStore.userRole)
+                console.log('✅authStore token:', authStore.loadToken())
+                console.log('✅res accesstoken:', res.data)
             })
 
-        console.log('✅ 로그인 성공! 홈페이지로 이동합니다.')
+        // 로그인 성공 시 리다이렉트 또는 상태 변경
+        console.log('로그인 성공:', {
+            email: email.value,
+            password: password.value,
+        })
 
         router.push('/')
     } catch (error) {
