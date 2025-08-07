@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-xl shadow-lg p-6">
+  <div v-if="authStore.isFinanceRole()" class="bg-white rounded-xl shadow-lg p-6">
     <h3 class="text-lg font-semibold text-gray-900 mb-4">펀딩 생성</h3>
     <p class="text-gray-600 text-sm mb-4">
       이 프로젝트로 펀딩을 시작하고 싶으신가요? 지금 바로 펀딩을 생성해보세요.
@@ -16,6 +16,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 import axios from 'axios'
 
 const props = defineProps({
@@ -23,6 +24,7 @@ const props = defineProps({
 })
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const goToFundingCreate = async () => {
   try {
