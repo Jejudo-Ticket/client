@@ -6,12 +6,12 @@ export const useAuthStore = defineStore('auth', () => {
     const token = ref('')
     const userRole = ref('')
 
-    function login(receivedToken, role = '') {
+    function login(data) {
         isLoggedIn.value = true
-        token.value = receivedToken
-        userRole.value = role
-        localStorage.setItem('jwt', receivedToken)
-        localStorage.setItem('userRole', role)
+        token.value = data.token || data.accessToken
+        userRole.value = data.userRole || data.role || ''
+        localStorage.setItem('jwt', token.value)
+        localStorage.setItem('userRole', userRole.value)
     }
 
     function logout() {
