@@ -42,7 +42,6 @@ import SortSelect from '@/components/common/SortSelect.vue'
 import CategoryFilter from '@/components/common/CategoryFilter.vue'
 import Pagination from '@/components/common/Pagination.vue'
 
-// 상태
 const tabOptions = [
   { value: 'Launch', label: '진행중인 펀딩' },
   { value: 'End', label: '종료된 펀딩' },
@@ -54,7 +53,6 @@ const selectedSort = ref('latest')
 const currentPage = ref(1)
 const totalPages = ref(1)
 
-// 데이터
 const allProjects = ref([])
 
 const categories = ref(['전체', '적금형', '대출형', '기부형', '챌린지형'])
@@ -67,10 +65,10 @@ const categoryMap = {
   챌린지형: 'Challenge',
 }
 
-// axios 인스턴스 설정 (백엔드 URL 맞게 수정)
+// axios 인스턴스 설정
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api', // 백엔드 주소 맞게 변경
-  // withCredentials: false, // 세션 사용 시 true, JWT면 false
+  baseURL: 'http://localhost:8080/api',
+  // withCredentials: false, 
 })
 
 onMounted(loadFundings)
